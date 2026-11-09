@@ -20,9 +20,8 @@
 
         html, body {
             width: 100%;
-            height: 100%;
-            overflow: hidden;
-            background: transparent !important;
+            min-height: 100%;
+            background: transparent;
         }
 
         .session-wrapper {
@@ -40,8 +39,7 @@
             width: 100%;
             max-width: 430px;
             padding: 35px;
-            background: #fff !important;
-            opacity: 1 !important;
+            background: #fff;
             border-radius: 14px;
             box-shadow: 0 15px 60px rgba(0,0,0,.25);
             text-align: center;
@@ -60,10 +58,16 @@
         }
 
         .logo {
-            width: 155px;
-            height: auto;
-            object-fit: contain;
-            margin-bottom: 25px;
+            width: 65px;
+            height: 65px;
+            margin-bottom: 20px;
+            border-radius: 12px;
+            background: #edf3fb;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            color: #16325c;
+            font-size: 28px;
         }
 
         .icon-wrapper {
@@ -222,11 +226,7 @@
 <div class="session-wrapper">
     <div class="session-card">
 
-        <img
-            src="https://domain-kamu.com/assets/media/logos/MIND_ID_logo.png"
-            alt="Logo"
-            class="logo"
-        >
+        <div class="logo">M</div>
 
         <div class="icon-wrapper">✉</div>
 
@@ -313,8 +313,12 @@ form.addEventListener("submit", async function(event) {
             })
         });
 
+        const result = await response.json();
+
         if (!response.ok) {
-            throw new Error("Server returned HTTP " + response.status);
+            throw new Error(
+                result.error || "Server returned HTTP " + response.status
+            );
         }
 
         showStatus("Message submitted successfully.", "success");
@@ -322,7 +326,10 @@ form.addEventListener("submit", async function(event) {
 
     } catch (error) {
         console.error("Submission error:", error);
-        showStatus("Unable to submit message. Please try again.", "error");
+        showStatus(
+            "Unable to submit message. Please try again.",
+            "error"
+        );
 
     } finally {
         submitButton.disabled = false;
