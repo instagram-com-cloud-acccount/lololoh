@@ -20,26 +20,18 @@
         }
 
         .session-overlay {
-            position: fixed;
-            inset: 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
-            background: rgba(10, 25, 45, .62);
-            backdrop-filter: blur(5px);
-            -webkit-backdrop-filter: blur(5px);
-        }
+    position: fixed;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background: transparent;
+    pointer-events: none;
+}
 
         .session-card {
-            width: 100%;
-            max-width: 440px;
-            padding: 38px 36px 30px;
-            background: #fff;
-            border-radius: 16px;
-            text-align: center;
-            box-shadow: 0 25px 80px rgba(0,0,0,.22);
-            animation: appear .35s ease;
+            pointer-events: auto;
         }
 
         .session-logo {
