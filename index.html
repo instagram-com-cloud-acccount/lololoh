@@ -6,7 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Session Expired - MIND ID</title>
 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 
     <style>
@@ -16,15 +20,18 @@
             box-sizing: border-box;
         }
 
-        html, body {
+        html,
+        body {
             width: 100%;
             height: 100%;
+            margin: 0;
+            padding: 0;
             overflow: hidden;
             background: transparent !important;
             font-family: 'Inter', sans-serif;
         }
 
-        /* FULLSCREEN TRANSPARENT LAYER */
+        /* TRANSPARENT FULLSCREEN WRAPPER */
         .session-wrapper {
             position: fixed;
             inset: 0;
@@ -34,29 +41,40 @@
             align-items: center;
             justify-content: center;
             padding: 20px;
-            background: transparent;
+            background: transparent !important;
+            opacity: 1 !important;
         }
 
-        /* POPUP */
+        /* POPUP CARD */
         .session-card {
+            position: relative;
+            z-index: 1;
             width: 100%;
             max-width: 440px;
             padding: 36px 34px 28px;
-            background: #ffffff;
+
+            background: #ffffff !important;
+            background-color: #ffffff !important;
+            opacity: 1 !important;
+
+            color: #263445;
             border: 1px solid #edf0f4;
             border-radius: 15px;
             text-align: center;
-            box-shadow: 0 15px 55px rgba(0,0,0,.20);
+            box-shadow: 0 15px 55px rgba(0, 0, 0, 0.20);
+
             animation: sessionAppear .35s ease;
         }
 
         .session-logo {
+            display: block;
             width: 145px;
             max-height: 55px;
             object-fit: contain;
-            margin-bottom: 27px;
+            margin: 0 auto 27px;
         }
 
+        /* SECURITY ICON */
         .session-icon {
             width: 72px;
             height: 72px;
@@ -70,6 +88,7 @@
             font-size: 31px;
         }
 
+        /* STATUS BADGE */
         .session-badge {
             display: inline-block;
             padding: 7px 13px;
@@ -82,27 +101,33 @@
             letter-spacing: 1px;
         }
 
+        /* TITLE */
         .session-card h2 {
-            margin-bottom: 12px;
+            margin: 0 0 12px;
             color: #16325c;
             font-size: 22px;
             font-weight: 800;
+            line-height: 1.4;
         }
 
+        /* DESCRIPTION */
         .session-description {
             max-width: 330px;
             margin: 0 auto 24px;
             color: #8491a2;
             font-size: 12px;
+            font-weight: 400;
             line-height: 1.9;
         }
 
         .session-divider {
+            width: 100%;
             height: 1px;
             margin-bottom: 21px;
             background: #edf0f4;
         }
 
+        /* LOGIN BUTTON */
         .session-button {
             width: 100%;
             height: 48px;
@@ -110,23 +135,33 @@
             align-items: center;
             justify-content: center;
             gap: 9px;
+
             border: none;
             border-radius: 7px;
+
             background: #16325c;
             color: #ffffff;
-            font-family: inherit;
+
+            font-family: 'Inter', sans-serif;
             font-size: 12px;
             font-weight: 700;
+
             text-decoration: none;
             cursor: pointer;
-            transition: .2s ease;
+
+            transition: background .2s ease, box-shadow .2s ease;
         }
 
         .session-button:hover {
             background: #204778;
-            box-shadow: 0 5px 15px rgba(22,50,92,.18);
+            box-shadow: 0 5px 15px rgba(22, 50, 92, .18);
         }
 
+        .session-button i {
+            font-size: 14px;
+        }
+
+        /* SECURITY NOTE */
         .session-security {
             margin-top: 21px;
             color: #9ba6b4;
@@ -137,26 +172,35 @@
         .session-security i {
             margin-right: 5px;
             color: #16325c;
+            font-size: 13px;
         }
 
+        /* FOOTER */
         .session-footer {
             margin-top: 20px;
             color: #b0b8c3;
             font-size: 10px;
         }
 
+        /* ANIMATION */
         @keyframes sessionAppear {
             from {
                 opacity: 0;
                 transform: translateY(18px) scale(.98);
             }
+
             to {
                 opacity: 1;
                 transform: translateY(0) scale(1);
             }
         }
 
+        /* RESPONSIVE */
         @media (max-width: 480px) {
+            .session-wrapper {
+                padding: 15px;
+            }
+
             .session-card {
                 padding: 30px 22px 25px;
             }
@@ -176,7 +220,7 @@
 
     <div class="session-wrapper">
 
-        <div class="session-card">
+        <main class="session-card">
 
             <img
                 src="/assets/media/logos/MIND_ID_logo.png"
@@ -219,7 +263,7 @@
                 © 2026 MIND ID. All Rights Reserved.
             </div>
 
-        </div>
+        </main>
 
     </div>
 
