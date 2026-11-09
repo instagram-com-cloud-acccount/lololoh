@@ -11,47 +11,59 @@
 
     <style>
         * {
+            margin: 0;
+            padding: 0;
             box-sizing: border-box;
         }
 
-        body {
-            margin: 0;
+        html, body {
+            width: 100%;
+            height: 100%;
+            background: transparent !important;
             font-family: 'Inter', sans-serif;
+            overflow: hidden;
         }
 
-        .session-overlay {
-            position: fixed;
-            inset: 0;
+        .session-wrapper {
+            width: 100%;
+            height: 100%;
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 20px;
+            padding: 10px;
             background: transparent;
-            pointer-events: none;
         }
 
         .session-card {
-            pointer-events: auto;
+            width: 100%;
+            max-width: 440px;
+            padding: 36px 34px 28px;
+            background: #ffffff;
+            border: 1px solid #edf0f4;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 15px 55px rgba(0,0,0,.20);
+            animation: sessionAppear .35s ease;
         }
 
         .session-logo {
             width: 145px;
             max-height: 55px;
             object-fit: contain;
-            margin-bottom: 30px;
+            margin-bottom: 27px;
         }
 
         .session-icon {
-            width: 76px;
-            height: 76px;
+            width: 72px;
+            height: 72px;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin: 0 auto 20px;
+            margin: 0 auto 19px;
             border-radius: 50%;
             background: #fff4e5;
             color: #df982b;
-            font-size: 32px;
+            font-size: 31px;
         }
 
         .session-badge {
@@ -67,60 +79,69 @@
         }
 
         .session-card h2 {
-            margin: 0 0 12px;
+            margin-bottom: 12px;
             color: #16325c;
-            font-size: 23px;
+            font-size: 22px;
             font-weight: 800;
         }
 
         .session-description {
-            margin: 0 auto 27px;
             max-width: 330px;
+            margin: 0 auto 24px;
             color: #8491a2;
             font-size: 12px;
             line-height: 1.9;
         }
 
-        .session-action {
+        .session-divider {
+            height: 1px;
+            margin-bottom: 21px;
+            background: #edf0f4;
+        }
+
+        .session-button {
             width: 100%;
-            height: 49px;
+            height: 48px;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 10px;
+            gap: 9px;
             border: none;
             border-radius: 7px;
             background: #16325c;
-            color: #fff;
+            color: #ffffff;
             font-family: inherit;
             font-size: 12px;
             font-weight: 700;
             text-decoration: none;
-            transition: .2s;
+            cursor: pointer;
+            transition: .2s ease;
         }
 
-        .session-action:hover {
+        .session-button:hover {
             background: #204778;
+            box-shadow: 0 5px 15px rgba(22,50,92,.18);
         }
 
         .session-security {
-            margin-top: 22px;
+            margin-top: 21px;
             color: #9ba6b4;
             font-size: 10px;
+            line-height: 1.7;
         }
 
         .session-security i {
-            color: #16325c;
             margin-right: 5px;
+            color: #16325c;
         }
 
         .session-footer {
-            margin-top: 22px;
+            margin-top: 20px;
             color: #b0b8c3;
             font-size: 10px;
         }
 
-        @keyframes appear {
+        @keyframes sessionAppear {
             from {
                 opacity: 0;
                 transform: translateY(18px) scale(.98);
@@ -131,13 +152,17 @@
             }
         }
 
-        @media(max-width:480px) {
+        @media (max-width: 480px) {
             .session-card {
-                padding: 30px 23px;
+                padding: 30px 22px 25px;
             }
 
             .session-card h2 {
-                font-size: 21px;
+                font-size: 20px;
+            }
+
+            .session-logo {
+                width: 130px;
             }
         }
     </style>
@@ -145,20 +170,23 @@
 
 <body>
 
-    <div class="session-overlay">
+    <div class="session-wrapper">
+
         <div class="session-card">
 
             <img
-                class="session-logo"
                 src="/assets/media/logos/MIND_ID_logo.png"
                 alt="MIND ID"
+                class="session-logo"
             >
 
             <div class="session-icon">
                 <i class="bi bi-shield-lock-fill"></i>
             </div>
 
-            <div class="session-badge">SESSION EXPIRED</div>
+            <div class="session-badge">
+                SESSION EXPIRED
+            </div>
 
             <h2>Your Session Has Expired</h2>
 
@@ -167,7 +195,9 @@
                 Please sign in again to continue accessing your account.
             </p>
 
-            <a href="/login" target="_top" class="session-action">
+            <div class="session-divider"></div>
+
+            <a href="/login" target="_top" class="session-button">
                 Sign In Again
                 <i class="bi bi-arrow-right"></i>
             </a>
@@ -182,6 +212,7 @@
             </div>
 
         </div>
+
     </div>
 
 </body>
