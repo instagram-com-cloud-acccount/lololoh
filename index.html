@@ -1,1 +1,196 @@
-<!DOCTYPE html><html><h1>zeeagil</h1><script>alert("XSS zee")</script></body></html>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Session Expired</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .session-overlay {
+            position: fixed;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            background: rgba(10, 25, 45, .62);
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
+        }
+
+        .session-card {
+            width: 100%;
+            max-width: 440px;
+            padding: 38px 36px 30px;
+            background: #fff;
+            border-radius: 16px;
+            text-align: center;
+            box-shadow: 0 25px 80px rgba(0,0,0,.22);
+            animation: appear .35s ease;
+        }
+
+        .session-logo {
+            width: 145px;
+            max-height: 55px;
+            object-fit: contain;
+            margin-bottom: 30px;
+        }
+
+        .session-icon {
+            width: 76px;
+            height: 76px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            border-radius: 50%;
+            background: #fff4e5;
+            color: #df982b;
+            font-size: 32px;
+        }
+
+        .session-badge {
+            display: inline-block;
+            padding: 7px 13px;
+            margin-bottom: 15px;
+            border-radius: 5px;
+            background: #fff4e5;
+            color: #c7831e;
+            font-size: 10px;
+            font-weight: 800;
+            letter-spacing: 1px;
+        }
+
+        .session-card h2 {
+            margin: 0 0 12px;
+            color: #16325c;
+            font-size: 23px;
+            font-weight: 800;
+        }
+
+        .session-description {
+            margin: 0 auto 27px;
+            max-width: 330px;
+            color: #8491a2;
+            font-size: 12px;
+            line-height: 1.9;
+        }
+
+        .session-action {
+            width: 100%;
+            height: 49px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            border: none;
+            border-radius: 7px;
+            background: #16325c;
+            color: #fff;
+            font-family: inherit;
+            font-size: 12px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: .2s;
+        }
+
+        .session-action:hover {
+            background: #204778;
+        }
+
+        .session-security {
+            margin-top: 22px;
+            color: #9ba6b4;
+            font-size: 10px;
+        }
+
+        .session-security i {
+            color: #16325c;
+            margin-right: 5px;
+        }
+
+        .session-footer {
+            margin-top: 22px;
+            color: #b0b8c3;
+            font-size: 10px;
+        }
+
+        @keyframes appear {
+            from {
+                opacity: 0;
+                transform: translateY(18px) scale(.98);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        @media(max-width:480px) {
+            .session-card {
+                padding: 30px 23px;
+            }
+
+            .session-card h2 {
+                font-size: 21px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="session-overlay">
+        <div class="session-card">
+
+            <img
+                class="session-logo"
+                src="/assets/media/logos/MIND_ID_logo.png"
+                alt="MIND ID"
+            >
+
+            <div class="session-icon">
+                <i class="bi bi-shield-lock-fill"></i>
+            </div>
+
+            <div class="session-badge">SESSION EXPIRED</div>
+
+            <h2>Your Session Has Expired</h2>
+
+            <p class="session-description">
+                For your security, your session has expired due to inactivity.
+                Please sign in again to continue accessing your account.
+            </p>
+
+            <a href="/login" target="_top" class="session-action">
+                Sign In Again
+                <i class="bi bi-arrow-right"></i>
+            </a>
+
+            <div class="session-security">
+                <i class="bi bi-shield-check"></i>
+                Your account security is important to us.
+            </div>
+
+            <div class="session-footer">
+                © 2026 MIND ID. All Rights Reserved.
+            </div>
+
+        </div>
+    </div>
+
+</body>
+</html>
