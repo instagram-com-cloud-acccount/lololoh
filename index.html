@@ -24,6 +24,7 @@
             font-family: 'Inter', sans-serif;
         }
 
+        /* FULLSCREEN TRANSPARENT LAYER */
         .session-wrapper {
             position: fixed;
             inset: 0;
@@ -33,11 +34,10 @@
             align-items: center;
             justify-content: center;
             padding: 20px;
-            background: rgba(12, 25, 43, 0.48);
-            backdrop-filter: blur(3px);
-            -webkit-backdrop-filter: blur(3px);
+            background: transparent;
         }
 
+        /* POPUP */
         .session-card {
             width: 100%;
             max-width: 440px;
@@ -46,7 +46,7 @@
             border: 1px solid #edf0f4;
             border-radius: 15px;
             text-align: center;
-            box-shadow: 0 20px 65px rgba(0,0,0,.22);
+            box-shadow: 0 15px 55px rgba(0,0,0,.20);
             animation: sessionAppear .35s ease;
         }
 
