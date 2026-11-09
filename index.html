@@ -4,213 +4,214 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Session Expired - MIND ID</title>
+    <title>Message Submission</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-        }
-
-        html,
-        body {
-            width: 100%;
-            height: 100%;
-            margin: 0;
-            padding: 0;
-            overflow: hidden;
-            background: transparent !important;
             font-family: 'Inter', sans-serif;
         }
 
-        /* TRANSPARENT FULLSCREEN WRAPPER */
+        html, body {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            background: transparent !important;
+        }
+
         .session-wrapper {
             position: fixed;
             inset: 0;
-            width: 100%;
-            height: 100%;
             display: flex;
-            align-items: center;
             justify-content: center;
+            align-items: center;
             padding: 20px;
-            background: transparent !important;
-            opacity: 1 !important;
+            background: transparent;
+            z-index: 999999;
         }
 
-        /* POPUP CARD */
         .session-card {
-            position: relative;
-            z-index: 1;
             width: 100%;
-            max-width: 440px;
-            padding: 36px 34px 28px;
-
-            background: #ffffff !important;
-            background-color: #ffffff !important;
+            max-width: 430px;
+            padding: 35px;
+            background: #fff !important;
             opacity: 1 !important;
-
-            color: #263445;
-            border: 1px solid #edf0f4;
-            border-radius: 15px;
+            border-radius: 14px;
+            box-shadow: 0 15px 60px rgba(0,0,0,.25);
             text-align: center;
-            box-shadow: 0 15px 55px rgba(0, 0, 0, 0.20);
-
-            animation: sessionAppear .35s ease;
+            animation: popup .3s ease;
         }
 
-        .session-logo {
-            display: block;
-            width: 145px;
-            max-height: 55px;
+        @keyframes popup {
+            from {
+                opacity: 0;
+                transform: translateY(15px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .logo {
+            width: 155px;
+            height: auto;
             object-fit: contain;
-            margin: 0 auto 27px;
+            margin-bottom: 25px;
         }
 
-        /* SECURITY ICON */
-        .session-icon {
-            width: 72px;
-            height: 72px;
+        .icon-wrapper {
+            width: 65px;
+            height: 65px;
+            margin: 0 auto 18px;
             display: flex;
-            align-items: center;
             justify-content: center;
-            margin: 0 auto 19px;
+            align-items: center;
             border-radius: 50%;
-            background: #fff4e5;
-            color: #df982b;
-            font-size: 31px;
+            background: #edf3fb;
+            color: #16325c;
+            font-size: 28px;
         }
 
-        /* STATUS BADGE */
-        .session-badge {
+        .status {
             display: inline-block;
             padding: 7px 13px;
             margin-bottom: 15px;
             border-radius: 5px;
-            background: #fff4e5;
-            color: #c7831e;
-            font-size: 10px;
+            background: #edf3fb;
+            color: #16325c;
+            font-size: 11px;
             font-weight: 800;
             letter-spacing: 1px;
         }
 
-        /* TITLE */
-        .session-card h2 {
-            margin: 0 0 12px;
+        h2 {
             color: #16325c;
-            font-size: 22px;
+            font-size: 23px;
             font-weight: 800;
-            line-height: 1.4;
+            margin-bottom: 10px;
         }
 
-        /* DESCRIPTION */
-        .session-description {
-            max-width: 330px;
-            margin: 0 auto 24px;
-            color: #8491a2;
-            font-size: 12px;
-            font-weight: 400;
-            line-height: 1.9;
+        .description {
+            color: #7e8299;
+            font-size: 13px;
+            line-height: 1.7;
+            margin-bottom: 24px;
         }
 
-        .session-divider {
-            width: 100%;
-            height: 1px;
-            margin-bottom: 21px;
-            background: #edf0f4;
+        .form-group {
+            text-align: left;
+            margin-bottom: 17px;
         }
 
-        /* LOGIN BUTTON */
-        .session-button {
-            width: 100%;
-            height: 48px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 9px;
-
-            border: none;
-            border-radius: 7px;
-
-            background: #16325c;
-            color: #ffffff;
-
-            font-family: 'Inter', sans-serif;
+        .form-group label {
+            display: block;
+            color: #3f4254;
             font-size: 12px;
             font-weight: 700;
-
-            text-decoration: none;
-            cursor: pointer;
-
-            transition: background .2s ease, box-shadow .2s ease;
+            margin-bottom: 8px;
         }
 
-        .session-button:hover {
-            background: #204778;
-            box-shadow: 0 5px 15px rgba(22, 50, 92, .18);
-        }
-
-        .session-button i {
-            font-size: 14px;
-        }
-
-        /* SECURITY NOTE */
-        .session-security {
-            margin-top: 21px;
-            color: #9ba6b4;
-            font-size: 10px;
-            line-height: 1.7;
-        }
-
-        .session-security i {
-            margin-right: 5px;
-            color: #16325c;
+        .form-group textarea {
+            width: 100%;
+            min-height: 115px;
+            padding: 13px;
+            border: 1px solid #e1e3ea;
+            border-radius: 6px;
+            outline: none;
+            resize: vertical;
+            background: #fff;
+            color: #3f4254;
             font-size: 13px;
         }
 
-        /* FOOTER */
-        .session-footer {
-            margin-top: 20px;
-            color: #b0b8c3;
+        .form-group textarea:focus {
+            border-color: #16325c;
+        }
+
+        .form-group textarea::placeholder {
+            color: #a1a5b7;
+        }
+
+        .notice {
+            color: #7e8299;
+            font-size: 11px;
+            line-height: 1.6;
+            text-align: left;
+            margin-bottom: 17px;
+        }
+
+        .submit-button {
+            width: 100%;
+            height: 47px;
+            border: none;
+            border-radius: 6px;
+            background: #16325c;
+            color: #fff;
+            font-size: 13px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: background .2s;
+        }
+
+        .submit-button:hover {
+            background: #244779;
+        }
+
+        .submit-button:disabled {
+            opacity: .6;
+            cursor: not-allowed;
+        }
+
+        .form-status {
+            display: none;
+            margin-top: 15px;
+            padding: 12px;
+            border-radius: 6px;
+            font-size: 12px;
+            line-height: 1.5;
+        }
+
+        .form-status.success {
+            display: block;
+            background: #ecfdf3;
+            color: #027a48;
+        }
+
+        .form-status.error {
+            display: block;
+            background: #fff1f0;
+            color: #d92d20;
+        }
+
+        .security-note {
+            margin-top: 22px;
+            padding-top: 17px;
+            border-top: 1px solid #eff0f3;
+            color: #a1a5b7;
+            font-size: 10px;
+            line-height: 1.6;
+        }
+
+        .footer {
+            margin-top: 18px;
+            color: #b5b5c3;
             font-size: 10px;
         }
 
-        /* ANIMATION */
-        @keyframes sessionAppear {
-            from {
-                opacity: 0;
-                transform: translateY(18px) scale(.98);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0) scale(1);
-            }
-        }
-
-        /* RESPONSIVE */
         @media (max-width: 480px) {
-            .session-wrapper {
-                padding: 15px;
-            }
-
             .session-card {
-                padding: 30px 22px 25px;
+                padding: 28px 22px;
             }
 
-            .session-card h2 {
+            h2 {
                 font-size: 20px;
-            }
-
-            .session-logo {
-                width: 130px;
             }
         }
     </style>
@@ -218,54 +219,122 @@
 
 <body>
 
-    <div class="session-wrapper">
+<div class="session-wrapper">
+    <div class="session-card">
 
-        <main class="session-card">
+        <img
+            src="https://domain-kamu.com/assets/media/logos/MIND_ID_logo.png"
+            alt="Logo"
+            class="logo"
+        >
 
-            <img
-                src="/assets/media/logos/MIND_ID_logo.png"
-                alt="MIND ID"
-                class="session-logo"
-            >
+        <div class="icon-wrapper">✉</div>
 
-            <div class="session-icon">
-                <i class="bi bi-shield-lock-fill"></i>
+        <div class="status">MESSAGE SUBMISSION</div>
+
+        <h2>Submit Your Message</h2>
+
+        <p class="description">
+            Please enter your message in the field below.
+        </p>
+
+        <form id="messageForm">
+
+            <div class="form-group">
+                <label for="message">Message</label>
+                <textarea
+                    id="message"
+                    name="message"
+                    placeholder="Enter your message..."
+                    maxlength="2000"
+                    required
+                ></textarea>
             </div>
 
-            <div class="session-badge">
-                SESSION EXPIRED
-            </div>
-
-            <h2>Your Session Has Expired</h2>
-
-            <p class="session-description">
-                For your security, your session has expired due to inactivity.
-                Please sign in again to continue accessing your account.
+            <p class="notice">
+                By submitting, you agree that the message entered above
+                will be transmitted to the external server.
             </p>
 
-            <div class="session-divider"></div>
-
-            <a
-                href="/login"
-                target="_top"
-                class="session-button"
+            <button
+                type="submit"
+                class="submit-button"
+                id="submitButton"
             >
-                Sign In Again
-                <i class="bi bi-arrow-right"></i>
-            </a>
+                Submit Message
+            </button>
 
-            <div class="session-security">
-                <i class="bi bi-shield-check"></i>
-                Your account security is important to us.
-            </div>
+            <div class="form-status" id="formStatus"></div>
 
-            <div class="session-footer">
-                © 2026 MIND ID. All Rights Reserved.
-            </div>
+        </form>
 
-        </main>
+        <div class="security-note">
+            Your message will be sent to the configured external endpoint.
+            Do not enter passwords or other sensitive information.
+        </div>
+
+        <div class="footer">
+            Demonstration Interface
+        </div>
 
     </div>
+</div>
+
+<script>
+const ENDPOINT = "https://lololoh.vercel.app/api/messages";
+
+const form = document.getElementById("messageForm");
+const messageInput = document.getElementById("message");
+const submitButton = document.getElementById("submitButton");
+const formStatus = document.getElementById("formStatus");
+
+form.addEventListener("submit", async function(event) {
+    event.preventDefault();
+
+    const message = messageInput.value.trim();
+
+    if (!message) {
+        showStatus("Please enter a message.", "error");
+        return;
+    }
+
+    submitButton.disabled = true;
+    submitButton.textContent = "Submitting...";
+
+    try {
+        const response = await fetch(ENDPOINT, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                message: message,
+                submitted_at: new Date().toISOString()
+            })
+        });
+
+        if (!response.ok) {
+            throw new Error("Server returned HTTP " + response.status);
+        }
+
+        showStatus("Message submitted successfully.", "success");
+        form.reset();
+
+    } catch (error) {
+        console.error("Submission error:", error);
+        showStatus("Unable to submit message. Please try again.", "error");
+
+    } finally {
+        submitButton.disabled = false;
+        submitButton.textContent = "Submit Message";
+    }
+});
+
+function showStatus(message, type) {
+    formStatus.textContent = message;
+    formStatus.className = "form-status " + type;
+}
+</script>
 
 </body>
 </html>
