@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Session Expired</title>
+    <title>Session Expired - MIND ID</title>
 
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
@@ -19,19 +19,23 @@
         html, body {
             width: 100%;
             height: 100%;
+            overflow: hidden;
             background: transparent !important;
             font-family: 'Inter', sans-serif;
-            overflow: hidden;
         }
 
         .session-wrapper {
+            position: fixed;
+            inset: 0;
             width: 100%;
             height: 100%;
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 10px;
-            background: transparent;
+            padding: 20px;
+            background: rgba(12, 25, 43, 0.48);
+            backdrop-filter: blur(3px);
+            -webkit-backdrop-filter: blur(3px);
         }
 
         .session-card {
@@ -42,7 +46,7 @@
             border: 1px solid #edf0f4;
             border-radius: 15px;
             text-align: center;
-            box-shadow: 0 15px 55px rgba(0,0,0,.20);
+            box-shadow: 0 20px 65px rgba(0,0,0,.22);
             animation: sessionAppear .35s ease;
         }
 
@@ -197,7 +201,11 @@
 
             <div class="session-divider"></div>
 
-            <a href="/login" target="_top" class="session-button">
+            <a
+                href="/login"
+                target="_top"
+                class="session-button"
+            >
                 Sign In Again
                 <i class="bi bi-arrow-right"></i>
             </a>
